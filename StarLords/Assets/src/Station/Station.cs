@@ -43,15 +43,18 @@ public class Station {
 
 
 	//This will handle all Upkeep for adding a room to the station
-	public void AddRoom(Room room, int relX, int relY)
+	public bool AddRoom(Room room, int relX, int relY)
 	{
 		//First the Relative Position needs to be identified by offsetting with the Center room
 
 		//Add the Node and if it was successfull Setup the room, which creates it in the "world"
 		if(nodeGraph.AddNode(room,relX,relY))
+		{
 			room.Room_Setup(this,relX,relY,    relX*28,    relY*28  );
+			return true;
+		}
 
-
+		return false;
 	}
 
 
@@ -81,7 +84,6 @@ public class Station {
 		// Re-orient to gameobject within the room. The previous Target Pos
 	}
 
-
 	bool DoesRoomExist(float globX, float globY)
 	{
 		float x=0;
@@ -99,5 +101,13 @@ public class Station {
 
 		return nodeGraph.Node_Exists((int)x, (int)y);
 	}
+
+
+
+	public List<Vector2> Get_OpenRoomLocations()
+	{
+		return nodeGraph.Get_OpenRoomLocations();
+	}
+
 
 }

@@ -59,14 +59,14 @@ public class R_Radar : Room
 		room_Objects.Add( door   );
 
 
-
+/*
 		bounds = new Rectangle(10,10);
 		//Place Object inside Room
 		PowerReactor pr = new PowerReactor();
 		room_Rotation = Quaternion.Euler(-180,0,0);
 		pr.Setup(globalPos_X,globalPos_Y,room_Rotation,bounds);
 		room_Objects.Add( pr   );
-
+*/
 
 	}
 

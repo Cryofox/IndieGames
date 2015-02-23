@@ -5,6 +5,14 @@ public class Btn_Card : MonoBehaviour {
 
 	int index=-1;
 	Card myCard;
+
+
+	public void Start()
+	{
+		
+	}
+
+
 	public void SetCardIndex(int id)
 	{
 		index=id;
@@ -22,7 +30,21 @@ public class Btn_Card : MonoBehaviour {
 		if(val==true)
 			myCard.isDragged=true;
 		else
-			myCard.isDragged=false;		
+		{
+			//Check if Right Mouse was clicked
+			if(Input.GetMouseButtonDown(2))
+			{
+				myCard.isDragged=false;	
+				myCard.isPlayed =false;					
+			}
+			else
+			{
+				//OtherWise Call Place Card 
+				myCard.isPlayed=true;
+			}
+
+		}
+			
 	}
 	
 

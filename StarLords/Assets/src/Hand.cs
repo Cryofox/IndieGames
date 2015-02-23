@@ -12,8 +12,10 @@ public class Hand {
 	List<Card> heldCards;
 
 	InfinityDeck iDeck;
-	public Hand()
+	Player player;
+	public Hand(Player player)
 	{
+		this.player=player;
 		heldCards = new List<Card>();
 		iDeck = new InfinityDeck();
 	}
@@ -38,9 +40,29 @@ public class Hand {
 		{
 			//When a Card Gets Played it's removed from the Hand, therefore all cards need to be Re-indexed
 			//Now we need to Tell this Cards Script, the ID so when its used we can reference it here
+
+			//Tell BTN_CARD what ID it has from the HAND
 			heldCards[i].go_Model.GetComponent<Btn_Card>().SetCardIndex(i);
 
-			if(!heldCards[i].isDragged)
+
+			if(heldCards[i].isPlayed)
+			{
+				if(player.PlayCard(heldCards[i]))
+				{	
+					heldCards[i].Destroy();
+					heldCards.RemoveAt(i);
+				}
+				else
+				{
+					heldCards[i].isPlayed=false;
+					heldCards[i].isDragged=false;
+				}
+				
+				i--;
+			}
+
+
+			else if(!heldCards[i].isDragged)
 			{
 				//Position it to 0 + 100xIts I position
 
@@ -54,6 +76,9 @@ public class Hand {
 				if(heldCards[i].rotationVal!=0)
 					heldCards[i].RotateRight();
 			}
+
+
+
 		}
 	}
 
@@ -71,15 +96,15 @@ public class Hand {
 
 			xCur= origin.x + calcDistance;
 
-			UnityEngine.Debug.Log("D="+ (distance));
-			UnityEngine.Debug.Log("CD="+ (calcDistance));
+		//	UnityEngine.Debug.Log("D="+ (distance));
+		//	UnityEngine.Debug.Log("CD="+ (calcDistance));
 			if(calcDistance > distance)
 			{
 				xCur=target.x;
 			}
-			UnityEngine.Debug.Log("Orig="+ (origin.x));		
-			UnityEngine.Debug.Log("xCur="+ (xCur));			
-			UnityEngine.Debug.Log("Target="+ (target.x));				
+		//	UnityEngine.Debug.Log("Orig="+ (origin.x));		
+		//	UnityEngine.Debug.Log("xCur="+ (xCur));			
+		//	UnityEngine.Debug.Log("Target="+ (target.x));				
 		}
 
 		else if(target.x < origin.x)
@@ -89,15 +114,15 @@ public class Hand {
 
 			xCur= origin.x + calcDistance;
 
-			UnityEngine.Debug.Log("2D="+ (distance));
-			UnityEngine.Debug.Log("2CD="+ (calcDistance));
+		//	UnityEngine.Debug.Log("2D="+ (distance));
+		//	UnityEngine.Debug.Log("2CD="+ (calcDistance));
 			if(calcDistance < distance)
 			{
 				xCur=target.x;
 			}
-			UnityEngine.Debug.Log("2Orig="+ (origin.x));		
-			UnityEngine.Debug.Log("2xCur="+ (xCur));			
-			UnityEngine.Debug.Log("2Target="+ (target.x));				
+		//	UnityEngine.Debug.Log("2Orig="+ (origin.x));		
+		//	UnityEngine.Debug.Log("2xCur="+ (xCur));			
+		//	UnityEngine.Debug.Log("2Target="+ (target.x));				
 		}
 		if(target.y > origin.y)
 		{
@@ -106,15 +131,15 @@ public class Hand {
 
 			yCur= origin.y + calcDistance;
 
-			UnityEngine.Debug.Log("yD="+ (distance));
-			UnityEngine.Debug.Log("yCD="+ (calcDistance));
+		//	UnityEngine.Debug.Log("yD="+ (distance));
+		//	UnityEngine.Debug.Log("yCD="+ (calcDistance));
 			if(calcDistance > distance)
 			{
 				yCur=target.y;
 			}
-			UnityEngine.Debug.Log("yOrig="+ (origin.y));		
-			UnityEngine.Debug.Log("yCur="+ (yCur));			
-			UnityEngine.Debug.Log("yTarget="+ (target.y));				
+		//	UnityEngine.Debug.Log("yOrig="+ (origin.y));		
+		//	UnityEngine.Debug.Log("yCur="+ (yCur));			
+		//	UnityEngine.Debug.Log("yTarget="+ (target.y));				
 		}
 
 		else if(target.y < origin.y)
@@ -124,15 +149,15 @@ public class Hand {
 
 			yCur= origin.y + calcDistance;
 
-			UnityEngine.Debug.Log("2yD="+ (distance));
-			UnityEngine.Debug.Log("2yCD="+ (calcDistance));
+		//	UnityEngine.Debug.Log("2yD="+ (distance));
+		//	UnityEngine.Debug.Log("2yCD="+ (calcDistance));
 			if(calcDistance < distance)
 			{
 				yCur=target.y;
 			}
-			UnityEngine.Debug.Log("2yOrig="+ (origin.y));		
-			UnityEngine.Debug.Log("2yCur="+ (yCur));			
-			UnityEngine.Debug.Log("2yTarget="+ (target.y));				
+		//	UnityEngine.Debug.Log("2yOrig="+ (origin.y));		
+		//	UnityEngine.Debug.Log("2yCur="+ (yCur));			
+		//	UnityEngine.Debug.Log("2yTarget="+ (target.y));				
 		}
 
 

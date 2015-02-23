@@ -20,7 +20,7 @@ public class InfinityDeck {
 
 	public Card DrawTopCard()
 	{
-		UnityEngine.Debug.Log("Drawing Top Card");
+//		UnityEngine.Debug.Log("Drawing Top Card");
 		string cardName= cards[  Random.Range(0, cards.Count)  ];
 		return GetNewCard(cardName);
 	}

@@ -3,10 +3,15 @@ using System.Collections;
 
 public class Card {
 	public Room storedRoom;
-	public GameObject go_Model;
-	public string name;
 
+
+	//GUI ELEMENT
+	public GameObject go_Model;
+
+
+	public string name="";
 	public bool isDragged=false;
+	public bool isPlayed=false;
 
 	public int 	rotationVal=0;
 
@@ -18,7 +23,7 @@ public class Card {
 
 	void CreateCard()
 	{
-		go_Model= Resources.Load<GameObject>("GameObjects/Cards/Card_Default");
+		go_Model= Resources.Load<GameObject>("GameObjects/GUI/Cards/Card_Default");
 		//Instantiate the Card
 		go_Model = GameObject.Instantiate(go_Model, Vector3.zero, Quaternion.identity) as GameObject;
 
@@ -54,6 +59,13 @@ public class Card {
 		rotationVal-=1;
 		if(rotationVal<0)
 			rotationVal=3;
+	}
+
+
+
+	public void Destroy()
+	{
+		Object.Destroy(go_Model);
 	}
 
 }

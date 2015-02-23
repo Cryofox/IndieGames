@@ -38,7 +38,7 @@ public class Mouse : MonoBehaviour {
 		// 0 = Left Mouse Down
 		if(Input.GetMouseButtonDown(0))
 		{
-			Left_MouseDown();
+		//	Left_MouseDown();
 		}
 		float sWheel= Input.GetAxis("Mouse ScrollWheel");
 		if (sWheel !=0)
@@ -56,7 +56,9 @@ public class Mouse : MonoBehaviour {
 		if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 		{
 			//Will need to Cap this Eventually
-			gameCamera.transform.position+= new Vector3(0,0, val*2000*timeElapsed);
+			//gameCamera.transform.position+= new Vector3(0,0, val*2000*timeElapsed);
+			
+
 		}
 		else
 		{
@@ -75,13 +77,13 @@ public class Mouse : MonoBehaviour {
 
 
 	//This will be used, if no GUI Element is Pressed?
-	void Left_MouseDown()
+	Vector2 Get_Mouse_RelVector2()
 	{
 		//Card Drag
 		//Determine if a Card exists at this location
 
 		// Click on World Code
-		/*  
+		 
 		//If we are Holding a Card
 
 			//Vector3 Find 
@@ -111,8 +113,8 @@ public class Mouse : MonoBehaviour {
 			//if(posx > (int) posx)
 			//	posx++;
 
-			game_Session.AddRoom(new Room(), (int)posx,(int)posy);
-		*/
+	//		game_Session.AddRoom(new Room(), (int)posx,(int)posy);
+			return new Vector2((int)posx,(int)posy);
 	}
 
 
@@ -122,9 +124,42 @@ public class Mouse : MonoBehaviour {
 		Ray ray = gameCamera.GetComponent<Camera>().ScreenPointToRay (Input.mousePosition);
 		Debug.DrawRay(ray.origin, ray.direction * 290, Color.green, 0.5f);
 
-
 		return (ray.origin + ray.direction*290);
 	}
 
+
+	public Vector3 ScreenWorld_Position(Vector3 pos)
+	{
+		Ray ray = gameCamera.GetComponent<Camera>().ScreenPointToRay (Input.mousePosition);
+		Debug.DrawRay(ray.origin, ray.direction * 290, Color.green, 0.5f);
+
+
+
+		Vector3 mPos = (ray.origin + ray.direction*290);
+
+
+			//Clamp the World Position to Station Offsets
+			//This only works atm because the station does not move
+			float posx=0;
+			float posy=0;
+
+
+			//Remember to divide by 28, as thats the size of a square tile
+			if( mPos.x >= 0)
+				posx = ((mPos.x - 14) /28) +1;
+			else
+				posx = ((mPos.x + 14) /28) -1;
+
+			if( mPos.y >= 0)
+				posy = ((mPos.y - 14) /28) +1;
+			else
+				posy = ((mPos.y + 14) /28) -1;
+
+			//if(posx > (int) posx)
+			//	posx++;
+
+	//		game_Session.AddRoom(new Room(), (int)posx,(int)posy);
+			return new Vector2((int)posx,(int)posy);
+	}
 
 }
