@@ -187,6 +187,7 @@
      <Compile Include="Assets\src\Cards\Card.cs" />
      <Compile Include="Assets\src\Controllers\Keyboard.cs" />
      <Compile Include="Assets\src\Controllers\Mouse.cs" />
+     <Compile Include="Assets\src\GUI_Interaction\Btn_Card.cs" />
      <Compile Include="Assets\src\Game.cs" />
      <Compile Include="Assets\src\Game_Session.cs" />
      <Compile Include="Assets\src\Hand.cs" />

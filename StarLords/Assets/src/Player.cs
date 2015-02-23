@@ -5,7 +5,7 @@ public class Player {
 
 	public Station station;
 	
-	private Hand cardHand;
+	public Hand cardHand;
 	public bool isHuman=false;
 	//This is just a class used to differentiate ownership
 	public Player(Station station, bool isHuman)
@@ -21,5 +21,13 @@ public class Player {
 		cardHand.Update(timeElapsed);
 	}
 
-	
+
+
+
+	//MouseKeyboard Interaction Code - Only Usable by Human Players
+	public bool DoesCardExist(){return true;}
+
+
+
+
 }

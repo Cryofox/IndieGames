@@ -7,8 +7,11 @@ public class Mouse : MonoBehaviour {
 	GameObject gameCamera;
 
 	Game_Session game_Session;
-	float CamSpeed=10;
 
+
+
+	float CamSpeed=10;
+	public Player human;
 	void Start()
 	{
 		gameCamera  = GameObject.Find("GameCamera");
@@ -35,6 +38,40 @@ public class Mouse : MonoBehaviour {
 		// 0 = Left Mouse Down
 		if(Input.GetMouseButtonDown(0))
 		{
+			Left_MouseDown();
+		}
+		float sWheel= Input.GetAxis("Mouse ScrollWheel");
+		if (sWheel !=0)
+			ScrollWheel( sWheel);
+	}
+
+
+	//Rotates the Card Currently Being Held
+	void ScrollWheel(float val)
+	{
+		//Get the Current Card being Dragged
+		Card cardPlaced = human.cardHand.Get_DraggedCard();
+		if(cardPlaced!= null)
+		{
+			// Rotate In the Direction the Wheel is Rotated
+			if(val>0)
+				cardPlaced.RotateRight();
+			else if(val<0)
+				cardPlaced.RotateLeft();			
+		}
+	}
+
+
+	//This will be used, if no GUI Element is Pressed?
+	void Left_MouseDown()
+	{
+		//Card Drag
+		//Determine if a Card exists at this location
+
+		// Click on World Code
+		/*  
+		//If we are Holding a Card
+
 			//Vector3 Find 
 
 			//I Spawn a room at 1,0 on L_Click
@@ -42,7 +79,8 @@ public class Mouse : MonoBehaviour {
 
 			Vector3 mPos = MouseWorld_Position();
 
-
+			//Clamp the World Position to Station Offsets
+			//This only works atm because the station does not move
 			float posx=0;
 			float posy=0;
 
@@ -61,15 +99,9 @@ public class Mouse : MonoBehaviour {
 			//if(posx > (int) posx)
 			//	posx++;
 
-
 			game_Session.AddRoom(new Room(), (int)posx,(int)posy);
-
-		}
+		*/
 	}
-
-
-
-
 
 
 
@@ -80,7 +112,6 @@ public class Mouse : MonoBehaviour {
 
 
 		return (ray.origin + ray.direction*290);
-
 	}
 
 
