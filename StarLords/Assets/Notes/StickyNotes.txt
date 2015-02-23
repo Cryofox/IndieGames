@@ -1,0 +1,229 @@
+Bump Map Steps:
+Take Image: Convert to GrayScale
+Increase Contrast and Brightness alot
+Contrast about 80% increase
+Contrast about 40% increase
+
+Finally add a Gaussian blur of about 10 pixels to improve 
+transitions from dark to light
+
+Construct Station via Blocks
+
+Drug to Look into: Adrafinil
+
+Peeps are funny silly creatures. Remember to keep everything Fun!
+
+
+Tiles Made:
+Hydroponic Tiles
+Radar Dish
+Research Lab- Prodives  Science. Peeps surround plasma balls and stare  					hands raised. Science!
+
+
+Tile - With surrounding Doors
+
+Tiles Needed:
+Dormitory - Increases the max amount of Peeps you can have  
+MedBed   -  ( A bed peeps jump into to heal)
+
+AirLock   - This is how peeps can exit into space to build stations 
+
+Asteroid Harvesting Station
+
+Solar Panel -collects nrg
+Fusion Core - Floating BAtterys, no really lol
+Thruster - Allows the movement of the station in a certain direction. 
+				Each thruster adds a Force in a Direction, but
+ 				each Station added increases the masreducing
+    			the effectiveness of thrusters.
+
+
+Turret Tiles - Automated inner Defence (They shoot marshmellows)
+Barracks  	 - A tile where fighter peeps can be requested to guard the internal station
+
+
+
+
+TradeStation - Ships can be loaded with Cargo - Food,Minerals,Science
+ 				and can be sent to "Planets" or "Stations" to convert to 						
+ 				Credits, Credits can also be loaded to convert for a 							
+ 				resource
+
+ 				Animation - Peeps literally throw bags at each other, the recieving peep falls down, then goes in the trade ship before blasting off
+
+
+Mine Deployment Station - Peeps stationed here start chucking mines 										
+							out through an airlockVent
+							The Mines are "smart" in that they will
+							avoid detonating on the ship, and they will 										
+							attempt to orbit the station's perimeter
+
+Fighter Bay 	- 	Fighter Peeps can be assigned here to fly fighter ships to  					patrol the station, and do hit/run tactics.
+
+Experimental Ion Cannon - Shoots a Concentrated Ion Beam in the  											
+						  direction it is faceing
+
+Ship Repair Station - Repairs ANY ship that docks here.
+
+Conference Room  - Allows the Player to Draw an additional card 
+ 					during Draw Phase
+
+Archives 				- Increases the Amount of Max Science a Player can  							have
+
+Treasurey			- Increases the Amount of Max Credits a Player can  							have
+
+Food Vault 			-  Increases the amount of Max Food a player can 								have
+
+StockPile				- Increases the amound of Minerals a player can have
+
+
+Section Lock 		- This Tile acts as a barrier to slow an invasion force 
+ 							from entering the next room
+
+Invasion Station - Crashes a Ship into a Target Stations Tile, releasing all
+ 					assigned fighter peeps into the enemy station to reek  
+ 					mass havok
+
+Cloning Lab 	-  Assign (2) Peeps here to constantly create new Peeps.
+
+Teleport Pad - Peeps can use Teleport Pads to Travel to other Teleport 
+ 					pads and reduce distance costs
+
+ 					*poof*, + spin = Magic Teleporting. Maybe they do a dance?
+
+Galactic News - Relays information as to what Commodity to sell and 
+ 					 buy based on economy, per Planet discovered.
+
+Scout Station	- Assigned peeps set out to explore the map and discover
+  					planets 
+
+
+Poison Chamber	- A room that locks enemy peeps inside and releases deadly neurotoxins 
+				  to kill them all
+
+
+Recycling Station - Assigned Peeps can allow the player the option of scrapping 1 card per upgrade
+(Shredder)			or scrapping multiple cards per stations. But 7 Card max means you can only have a combination of upgardes and stations that equate to 7
+(Cards get floated into bin)
+
+
+Escape Pods 	- If peeps have been cutoff from the station, and they are on 
+				floating debris which is about to explode, they will rush to 
+				the nearest escape pod, and attempt to rejoin the main ship.
+
+
+//Destroying a Station is just the Cost of Building it?
+Refunds 
+
+
+
+//Once Barracks is created, orders can be given to fighter peeps
+
+
+How Research Works: 
+
+Research works uniquely in this game. 
+	If you wish to upgrade a tile, it will cost the minerals + the science 	stated on the card. To upgrade a tile simply place an exact copy of 	the tile from your hand onto the duplicate tile on the board.
+
+Research can also be used to increase:
+	Economy Rates 	  (inf)
+	Weapon Damage 	  (inf)
+	Armour Resistance (Inf)
+
+	Introduce new Tiles into the Infinity Deck.
+
+
+// Happiness?
+
+
+
+
+ Goal of the Game:
+ 	Mercenary Wars : Travel Through Space, find enemy stations and   
+ 							destroy them.
+    
+
+
+
+
+
+
+Since Rooms have Walls, the Flooring of a placed tile already partially exists, peeps can enter into a room thats partially built, but they are vulnerable to outside elements as the walls have not yet been erected.
+
+Onces the walls are erected are erected everything works out normall then the objects inside etc.
+
+
+Walls will be halfed in size and they will be placed back to back to mimic the original
+idea
+
+
+Utilize Parent-CHild Heirarchy. Once Peeps require pathfinding to Locations, they can do so based on relativity. 
+IE The Station moves, the children move along with it
+
+Station - Moved by Thrusters
+	-Rooms
+	-Objects
+	-Peeps
+
+
+To Detect Collision utilize HitBoxes (NOT COLLIDERS FROM UNITY), and then cross reference trajectory with all hitboxes in the game.
+	When Optimizing, reduce the area into segments to reduce the number of Objects being checked against
+
+
+
+
+
+
+
+//
+Rooms [ 20 / 30]:
+[Entrance Locations] [1= Done] [Outside or Inside]
+[S]		[1]	Radar Station
+[NS]	[1]	Lab Bench
+[NSWE]	[1]	Hydroponic
+[NSWE]	[1]	Dormitory
+[NS]	[1]	MedBed							
+[NS]	[1]	AirLock  						
+[S]		[1]	(Asteroid)Harvesting Station
+[NSWE]	[1]	Teleport Pad
+[NSWE]	[1]	Ship Repair Station
+[NWE]	[1]	Turret Tiles
+
+
+[S]	[1]	Fighter Bay 				- These will be assigned Tasks to do, Attack, Defend, patrol, scout. No need for an exact Scout Station?
+[NSWE]	[1]	Escape Pods 
+[NSE]	[1]	Conference Room
+[NSWE]	[1]	Cloning Lab 
+[NSWE]	[1]	Recycling Station
+[NSWE]	[1]	Solar Panel
+[NSWE]	[1]	Power Reactor (Use this as Main Reactor for now)
+[NSWE]	[1]	Thruster
+[NSWE]	[1]	StockPile
+[NSWE]	[1]	Treasurey
+
+[NSWE]	[1]	Food Vault
+[NSWE]	[1]	Archives
+
+[NSWE]	[1]	Barracks
+[NSWE]	[ ]	Galactic News
+[NSWE]	[ ]	Poison Chamber
+
+
+[NSWE]	[ ]	Main Reactor
+
+[NSWE]	[ ]	Mine Deployment Station
+
+[NSWE]	[ ]	Experimental Ion Cannon
+
+[NSWE]	[ ]	TradeStation
+[NSWE]	[ ]	Invasion Station
+
+
+[NSWE]	[ ]	Section Lock <- Might prove useless, since Invading peeps will have to shoot through doors anyways
+
+Objects:
+	Radar Dish
+	Plasma Ball
+	Hydroponics Table
+	Beds
+	Medical Beds
