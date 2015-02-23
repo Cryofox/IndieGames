@@ -42,22 +42,34 @@ public class Mouse : MonoBehaviour {
 		}
 		float sWheel= Input.GetAxis("Mouse ScrollWheel");
 		if (sWheel !=0)
-			ScrollWheel( sWheel);
+			ScrollWheel( sWheel,timeElapsed);
 	}
 
 
 	//Rotates the Card Currently Being Held
-	void ScrollWheel(float val)
+	void ScrollWheel(float val, float timeElapsed)
 	{
-		//Get the Current Card being Dragged
-		Card cardPlaced = human.cardHand.Get_DraggedCard();
-		if(cardPlaced!= null)
+
+		//KeyBoard Call, shhh ik its cheating :P
+
+		//If CTRL is pressed we zoom
+		if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 		{
-			// Rotate In the Direction the Wheel is Rotated
-			if(val>0)
-				cardPlaced.RotateRight();
-			else if(val<0)
-				cardPlaced.RotateLeft();			
+			//Will need to Cap this Eventually
+			gameCamera.transform.position+= new Vector3(0,0, val*2000*timeElapsed);
+		}
+		else
+		{
+			//Get the Current Card being Dragged
+			Card cardPlaced = human.cardHand.Get_DraggedCard();
+			if(cardPlaced!= null)
+			{
+				// Rotate In the Direction the Wheel is Rotated
+				if(val>0)
+					cardPlaced.RotateRight();
+				else if(val<0)
+					cardPlaced.RotateLeft();			
+			}
 		}
 	}
 

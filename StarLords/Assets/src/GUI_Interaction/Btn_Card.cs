@@ -11,7 +11,7 @@ public class Btn_Card : MonoBehaviour {
 	}
 	public void SetCard(Card card)
 	{
-		Debug.LogWarning("Setting Card");
+		//Debug.LogWarning("Setting Card");
 		myCard=card;
 	}
 
