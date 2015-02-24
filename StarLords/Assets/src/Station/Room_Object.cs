@@ -18,6 +18,39 @@ public class Room_Object {
 
 	//This alerts a Peep if the object is busy atm
 	bool isInUse = false;
+
+
+
+
+
+	//Animation Related Interactions
+	Vector2 	_interaction_Position;
+	Quaternion	_interaction_Orientation;
+
+
+
+
+
+	public Vector2 interaction_Position
+	{
+		get{
+				//For now just go where the Object is
+				return model_Object.transform.localPosition;
+			}
+	}
+
+	public Quaternion interaction_Orientation
+	{
+		get{
+			return Quaternion.identity;
+			}
+	}
+
+
+
+
+
+
 	protected Rectangle boxCollider= new Rectangle(0,0);
 
 	public GameObject model_Object;
@@ -50,7 +83,8 @@ public class Room_Object {
 
 
 
-	public Room_Object(){}
+	public Room_Object()
+	{}
 
 
 	//Initialization Logic, and place piece in the game

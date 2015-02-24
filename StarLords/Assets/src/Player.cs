@@ -80,7 +80,7 @@ public class Player {
 	public bool PlayCard(Card card)
 	{
 		//I have a Card to Play
-		UnityEngine.Debug.Log("Card="+ card.name);
+//		UnityEngine.Debug.Log("Card="+ card.name);
 		Vector2 gameCardPos= (mouse.ScreenWorld_Position(card.go_Model.transform.position));
 
 		return AddRoom(card.storedRoom, (int) gameCardPos.x, (int) gameCardPos.y);
